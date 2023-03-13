@@ -1,5 +1,9 @@
 import { githubApiResponses } from "../../git_hub_api_responses";
+import { ReactComponent as Check } from "./check.svg";
 import style from "./Dashboard.module.scss";
+import { ReactComponent as Error } from "./error.svg";
+import { ReactComponent as Lock } from "./lock.svg";
+import { ReactComponent as Unlock } from "./unlock.svg";
 
 export function Dashboard() {
 	const title = "DevDash_";
@@ -24,8 +28,13 @@ export function Dashboard() {
 								>
 									{widget.repositoryData.organization.login}/{widget.repositoryData.name}
 								</a>
-								{/*{widget.repositoryData.private ? <Lock /> : <Unlock />}*/}
+								{widget.repositoryData.private ? <Lock /> : <Unlock />}
 							</header>
+							{widget.CiStatus.workflow_runs.length > 0 && (
+								<div>
+									{widget.CiStatus.workflow_runs[0].status === "completed" ? <Check /> : <Error />}
+								</div>
+							)}
 						</article>
 					))}
 				</ul>
