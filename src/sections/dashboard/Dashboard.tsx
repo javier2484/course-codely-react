@@ -35,14 +35,12 @@ const repository = new GitHubApiGitHubRepositoryRepository(config.github_access_
 
 export function Dashboard() {
 	const [gitHubApiResponses, setGitHubApiResponses] = useState<GitHubApiResponses[]>([]);
-
 	useEffect(() => {
-		repository.search(config.widgets.map((widget) => widget.repository_url)).then((responses) => {
-			setGitHubApiResponses(responses);
-		});
-		// .catch((exception) => {
-		// 	throw exception;
-		// });
+		void repository
+			.search(config.widgets.map((widget) => widget.repository_url))
+			.then((responses) => {
+				setGitHubApiResponses(responses);
+			});
 	}, []);
 
 	return (
@@ -61,10 +59,10 @@ export function Dashboard() {
 								className={styles.widget__title}
 								href={widget.repositoryData.html_url}
 								target="_blank"
-								title={`${widget.repositoryData.organization.login}/${widget.repositoryData.name}`}
+								title={`${widget.repositoryData.owner.login}/${widget.repositoryData.name}`}
 								rel="noreferrer"
 							>
-								{widget.repositoryData.organization.login}/{widget.repositoryData.name}
+								{widget.repositoryData.owner.login}/{widget.repositoryData.name}
 							</a>
 							{widget.repositoryData.private ? <Lock /> : <Unlock />}
 						</header>

@@ -453,7 +453,6 @@ export interface RepositoryData {
 	default_branch: string;
 	permissions: Permissions;
 	temp_clone_token: string;
-	organization: Owner;
 	network_count: number;
 	subscribers_count: number;
 }

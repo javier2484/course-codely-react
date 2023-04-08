@@ -17,5 +17,9 @@ export const config: DevDashConfig = {
 			id: "5e524353-7e52-4581-8c1c-b5db1b593fc7",
 			repository_url: "https://github.com/javier2484/skeleton-ddd-typescript",
 		},
+		{
+			id: "4d7125ae-3a39-40c9-ba6a-fa491abce223",
+			repository_url: "https://github.com/javier2484/next-skeleton",
+		},
 	],
 };
